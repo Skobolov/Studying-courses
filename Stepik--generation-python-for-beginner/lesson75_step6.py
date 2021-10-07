@@ -11,5 +11,6 @@ while num != 0:
     if last_digit > max_digit:
         max_digit = last_digit
     num = num // 10
+
 print('Максимальная цифра равна', max_digit)
 print('Минимальная цифра равна', min_digit)

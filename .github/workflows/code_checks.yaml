@@ -1,35 +1,35 @@
-name: Code checks
-
-on:
-  schedule:
-    - cron: '45 * * * *'
-
-jobs:
-  build:
-
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.9
-
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install flake8 flake8-requests flake8-eradicate flake8-literal flake8-simplify flake8-html flake8-assert-msg pep8-naming flake8-unused-arguments
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-
-      - name: Lint with flake8
-        run: |
-          flake8 . --count --max-complexity=10 --max-line-length=127 --statistics --format=html --htmldir=flake8-report
-
-      - name: Upload flake8 report
-        uses: actions/upload-artifact@v2
-        if: failure()
-        with:
-          name: flake8-report
-          path: ./flake8-report
+#name: Code checks
+#
+#on:
+#  schedule:
+#    - cron: '45 * * * *'
+#
+#jobs:
+#  build:
+#
+#    runs-on: ubuntu-latest
+#
+#    steps:
+#      - uses: actions/checkout@v2
+#
+#      - name: Set up Python
+#        uses: actions/setup-python@v2
+#        with:
+#          python-version: 3.9
+#
+#      - name: Install dependencies
+#        run: |
+#          python -m pip install --upgrade pip
+#          pip install flake8 flake8-requests flake8-eradicate flake8-literal flake8-simplify flake8-html flake8-assert-msg pep8-naming flake8-unused-arguments
+#          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+#
+#      - name: Lint with flake8
+#        run: |
+#          flake8 . --count --max-complexity=10 --max-line-length=127 --statistics --format=html --htmldir=flake8-report
+#
+#      - name: Upload flake8 report
+#        uses: actions/upload-artifact@v2
+#        if: failure()
+#        with:
+#          name: flake8-report
+#          path: ./flake8-report
