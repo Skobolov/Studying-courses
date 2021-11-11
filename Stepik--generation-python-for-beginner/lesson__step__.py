@@ -1,6 +1,12 @@
-s = input()
-c_l = 0
-for c in s:
-    if c in s.lower and s.isalpha() == True:
-        c_l += 1
-print(c_l)
+def draw_triangle(fill, base):
+    for i in range(1, base + 1):
+        r = 1
+        k = round(base / 2)
+        for i in range(1, k):
+            print(r, end='')
+            r += 1
+        for j in range(k, 0, -1):
+            print(r, end='')
+            r -= 1
+
+draw_triangle('*', 9)
